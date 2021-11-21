@@ -1,0 +1,26 @@
+syntax = "proto3";
+option go_package = "./generated";
+package generated;
+
+service Chat {
+  rpc Join(Options) returns (LoggedUser);
+  rpc Chat(Empty) returns (Message);
+  rpc Send(Message) returns (Empty);
+}
+
+message Message { 
+   string contents = 1;
+}
+
+message LoggedUser { 
+   string name = 1;
+   int32 id      = 2;
+}
+
+message Options {
+   string name = 1;
+}
+
+message Empty {
+   string name = 1;
+}
