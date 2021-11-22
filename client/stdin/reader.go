@@ -20,7 +20,6 @@ func NewReader() *Reader {
 }
 
 func (r *Reader) listenStandardInput() {
-	fmt.Println("Listening to stdin")
 	for {
 		reader := bufio.NewReader(os.Stdin)
 		line, err := reader.ReadString('\n')
@@ -28,7 +27,6 @@ func (r *Reader) listenStandardInput() {
 			fmt.Printf("error: %s", err.Error())
 			break
 		}
-		fmt.Println(line)
 		if line != "\n" {
 			r.channel <- line
 		}

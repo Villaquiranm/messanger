@@ -4,17 +4,21 @@ package generated;
 
 service Chat {
   rpc Join(Options) returns (LoggedUser);
-  rpc Chat(Empty) returns (Message);
+  rpc GetMessages(LoggedUser) returns (Messages);
   rpc Send(Message) returns (Empty);
+  rpc Disconnect(LoggedUser) returns (Empty);
+}
+message Messages {
+   repeated Message messages = 1;
 }
 
 message Message { 
    string contents = 1;
+   string name     = 2;
 }
 
 message LoggedUser { 
    string name = 1;
-   int32 id      = 2;
 }
 
 message Options {
